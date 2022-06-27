@@ -1,0 +1,26 @@
+/* LineOfBusinessDetailComponent's private CSS styles */
+label {
+  color: #435960;
+  font-weight: bold;
+}
+ul {
+  font-size: 1em;
+  right: 0px;
+  padding: 0rem;
+}
+button {
+  margin-top: 20px;
+  margin-right: .5rem;
+  background-color: #eee;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button:disabled {
+  background-color: #eee;
+  color: #ccc;
+  cursor: auto;
+}

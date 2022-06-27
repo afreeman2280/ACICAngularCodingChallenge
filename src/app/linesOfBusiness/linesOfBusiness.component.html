@@ -1,0 +1,26 @@
+<h2>My Allowed Lines of Business</h2>
+
+<div>
+  <label for="new-lineOfBusiness">Line of Business Name: </label>
+  <input id="new-lineOfBusiness" #lineOfBusinessName />
+  <br />
+  <label for="lineOfBusiness-description">Line Of Business Description: </label>
+  <input id="lineOfBusiness-description" #lineOfBusinessDescription />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button class="add-button" (click)="add(lineOfBusinessName.value, lineOfBusinessDescription.value); lineOfBusinessName.value='';">
+    Add New Line of Business
+  </button>
+</div>
+
+<ul class="linesOfBusiness">
+  <li *ngFor="let lineOfBusiness of linesOfBusiness">
+    <a routerLink="/detail/{{lineOfBusiness.id}}">
+      
+      <span class="badge">{{lineOfBusiness.id}}</span> {{lineOfBusiness.name}} - {{lineOfBusiness.description}}
+    </a>
+    <button class="delete" title="delete lineOfBusiness"
+      (click)="delete(lineOfBusiness)">x</button>
+    
+  </li>
+</ul>
