@@ -10,5 +10,5 @@ export const LINES_OF_BUSINESS: LineOfBusiness[] = [
   { id: 17, name: 'Dynama',description:"Horizon" },
   { id: 18, name: 'Dr IQ',description:"Singer" },
   { id: 19, name: 'Magma',description:"Pokemon" },
-  { id: 20, name: 'Tornado',description:"Something" }
+  { id: 20, name: 'Tornado',description:"OnePunch" }
 ];

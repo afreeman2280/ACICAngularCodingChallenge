@@ -12,7 +12,7 @@ declare const require: {
     keys(): string[];
     <T>(id: string): T;
   };
-};
+}; 
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(

@@ -77,9 +77,9 @@ export class ReturnQuotesFolderComponent implements OnInit {
 
       this.lineOfBusinessService.getLineOfBusiness(second[0])
       .subscribe(secondMostPopularCompanyName => this.secondMostPopularCompanyName = secondMostPopularCompanyName.name)
-      
-      this.firstLineOfBusinessName = LINES_OF_BUSINESS.find(x => x.id === first[0])?.name
-      this.secondLineOfBusinessName = LINES_OF_BUSINESS.find(x => x.id === second[0])?.name
+       
+      this.firstLineOfBusinessName = LINES_OF_BUSINESS.find(x => x.id === first[0])?.name;
+      this.secondLineOfBusinessName = LINES_OF_BUSINESS.find(x => x.id === second[0])?.name;
     }
    
   } 

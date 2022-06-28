@@ -27,7 +27,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 107, quoteNumber: 'AC126PC', lineOfBusiness: 13 },
       { id: 108, quoteNumber: 'AC127PC', lineOfBusiness: 15 }
     ];
-
+ 
     return {linesOfBusiness,recentQuotes};
   }
 

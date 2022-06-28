@@ -24,7 +24,7 @@ export class LineOfBusinessSearchComponent implements OnInit {
   search(term: string): void {
     this.searchTerms.next(term);
   }
-
+ 
   ngOnInit(): void {
     this.linesOfBusiness$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term

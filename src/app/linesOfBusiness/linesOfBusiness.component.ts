@@ -16,7 +16,7 @@ export class LineOfBusinessComponent implements OnInit {
   ngOnInit() {
     this.getLinesOfBusiness();
   }
-
+ 
   getLinesOfBusiness(): void {
     this.lineOfBusinessService.getLinesOfBusiness()
     .subscribe(linesOfBusiness => this.linesOfBusiness = linesOfBusiness);

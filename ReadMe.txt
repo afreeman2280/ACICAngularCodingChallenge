@@ -1,5 +1,5 @@
 Hello!  Thank you for your interest in applying for a job at Atlantic Casualty Insurance Company!
-
+ 
 Inside this directory you'll find a small angular application.  It's a simplified version of actual functionality in our main customer portal.
 
 As a demonstration of your skillset and knowledge we'd like you to follow the specifications below to complete a small set of changes to this application.

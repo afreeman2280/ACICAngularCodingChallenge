@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.getLinesOfBusiness();
   }
-
+ 
   getLinesOfBusiness(): void {
     this.lineOfBusinessService.getLinesOfBusiness()
       .subscribe(linesOfBusiness => this.linesOfBusiness = linesOfBusiness.slice(1, 4));

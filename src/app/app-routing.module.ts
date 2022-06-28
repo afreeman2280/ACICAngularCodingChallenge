@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: LineOfBusinessDetailComponent },
   { path: 'linesOfBusiness', component: LineOfBusinessComponent }
 ];
-
+ 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]

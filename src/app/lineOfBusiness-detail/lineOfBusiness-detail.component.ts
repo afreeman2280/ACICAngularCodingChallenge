@@ -12,7 +12,7 @@ import { LineOfBusinessService } from '../lineOfBusiness.service';
 })
 export class LineOfBusinessDetailComponent implements OnInit {
   lineOfBusiness: LineOfBusiness | undefined;
-
+ 
   constructor(
     private route: ActivatedRoute,
     private lineOfBusinessService: LineOfBusinessService,

@@ -4,8 +4,8 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { RecentQuote } from './recentQuote';
 import { MessageService } from './message.service';
-
-
+ 
+ 
 @Injectable({ providedIn: 'root' })
 export class RecentQuoteService {
   // URL to web api
