@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { from } from 'rxjs';
 import { LineOfBusiness } from '../LineOfBusiness';
+import { LINES_OF_BUSINESS } from '../mock-linesOfBusiness';
 import { map,distinct } from 'rxjs/operators';
 import { RecentQuote } from '../recentQuote';
 import { LineOfBusinessService } from '../lineOfBusiness.service';
@@ -15,13 +16,14 @@ import { variable } from '@angular/compiler/src/output/output_ast';
   styleUrls: [ './returnQuotesFolder.component.css' ]
 })
 export class ReturnQuotesFolderComponent implements OnInit {
+  // i think should be most popular and second most popular should be String/At least not an array
   mostPopularQuote: RecentQuote[]= [];
   secondPopularQuote: RecentQuote[]= [];
+  firstLineOfBusinessName: string|undefined;
+  secondLineOfBusinessName: string|undefined;
   quoteList: RecentQuote[] = [];
-  firstQuote: Map<any, any[]> = new Map();
-  secondQuote: Map<any, any[]> = new Map();
-  mostPopularCompanyName: any;
-  secondMostPopularCompanyName: any;
+  mostPopularCompanyName: string|undefined;
+  secondMostPopularCompanyName: string|undefined;
 
 
 
@@ -34,19 +36,21 @@ export class ReturnQuotesFolderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMostPopularRecentQuotesList();
-    this.getMostPopularRecentQuotesList(); 
+    
   }
   getMostPopularRecentQuotesList(): void {
        this.RecentQuoteService.getRecentQuotesList()
-    .subscribe((quoteList) => {this.quoteList = quoteList;this.getQuotesHelper()});
+    .subscribe((quoteList) => {this.quoteList = quoteList;
+      this.getQuotesHelper()});
   }
-  getSecondMostPopularRecentQuotesList2(): void {
+  getSecondMostPopularRecentQuotesList(): void {
     this.RecentQuoteService.getRecentQuotesList()
- .subscribe((secondPopularQuote) => {this.secondPopularQuote = secondPopularQuote;this.getQuotesHelper()});
+ .subscribe((secondPopularQuote) => {this.secondPopularQuote = secondPopularQuote;
+  this.getQuotesHelper()});
 }
 // I think this method could be better/more efficent
-// I think i could separate the service calls so the method don't so big/less service calls?
-// Maybe could use one ngfor in the html?
+// I think i could separate the service calls so the method don't so big
+// Maybe could use one ngfor in the html instead of two?
   getQuotesHelper(): void{
     
       const map = this.quoteList.reduce((acc, val) => {
@@ -58,21 +62,24 @@ export class ReturnQuotesFolderComponent implements OnInit {
          return acc;
       }, new Map);
       var mapAsc = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
-      console.log(mapAsc)
       const first = [...mapAsc][0];
       const second = [...mapAsc][1];
-      this.firstQuote = first[0];
-      this.secondQuote = second[0];
   
-       this.RecentQuoteService.getRecentQuotesByLineOfBusiness(Number(this.firstQuote))
+  
+       this.RecentQuoteService.getRecentQuotesByLineOfBusiness(first[0])
        .subscribe(mostPopularQuote => {this.mostPopularQuote = mostPopularQuote.slice(1,2)});
-      this.RecentQuoteService.getRecentQuotesByLineOfBusiness(Number(this.secondQuote))
-      .subscribe(secondPopularQuote => {this.secondPopularQuote = secondPopularQuote.slice(1,2)});
-      this.lineOfBusinessService.getLineOfBusiness(Number(this.firstQuote))
-      .subscribe(mostPopularCompanyName => this.mostPopularCompanyName = mostPopularCompanyName.name)
-      this.lineOfBusinessService.getLineOfBusiness(Number(this.secondQuote))
-      .subscribe(secondMostPopularCompanyName => this.secondMostPopularCompanyName = secondMostPopularCompanyName.name)
 
+      this.RecentQuoteService.getRecentQuotesByLineOfBusiness(second[0])
+      .subscribe(secondPopularQuote => {this.secondPopularQuote = secondPopularQuote.slice(1,2)});
+
+      this.lineOfBusinessService.getLineOfBusiness(first[0])
+      .subscribe(mostPopularCompanyName => this.mostPopularCompanyName = mostPopularCompanyName.name)
+
+      this.lineOfBusinessService.getLineOfBusiness(second[0])
+      .subscribe(secondMostPopularCompanyName => this.secondMostPopularCompanyName = secondMostPopularCompanyName.name)
+      
+      this.firstLineOfBusinessName = LINES_OF_BUSINESS.find(x => x.id === first[0])?.name
+      this.secondLineOfBusinessName = LINES_OF_BUSINESS.find(x => x.id === second[0])?.name
     }
    
   } 

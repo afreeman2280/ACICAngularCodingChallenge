@@ -1,16 +1,10 @@
 <h2>Popular Quotes</h2>
 
-<div>
-  
-    
+<div>  
      <ul *ngFor="let recent of mostPopularQuote">
-      
-        {{mostPopularCompanyName}} - {{recent.quoteNumber}}
+        {{mostPopularCompanyName}} - {{recent.quoteNumber}} - {{firstLineOfBusinessName}}
     </ul>
       <ul *ngFor="let recent of secondPopularQuote">
-        
-        {{secondMostPopularCompanyName}} - {{recent.quoteNumber}}
+        {{secondMostPopularCompanyName}} - {{recent.quoteNumber}} - {{secondLineOfBusinessName}}
       </ul>
-      
-
 </div>

@@ -1,5 +1,5 @@
 export interface RecentQuote {
-  id: number;
+  id: number; 
   quoteNumber: string;
   lineOfBusiness: number;
 }

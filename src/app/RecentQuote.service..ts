@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Observable, of } from 'rxjs';
-import { catchError, distinct, map, tap } from 'rxjs/operators';
-
+import { catchError, map, tap } from 'rxjs/operators';
 import { RecentQuote } from './recentQuote';
 import { MessageService } from './message.service';
 
@@ -27,7 +25,6 @@ export class RecentQuoteService {
     getRecentQuotesList(): Observable<RecentQuote[]> {
       return this.http.get<RecentQuote[]>(this.recentQuotesUrl)
         .pipe(
-          distinct(),
           tap(_ => this.log('fetched recent quote list')),
           catchError(this.handleError<RecentQuote[]>('getRecentQuotesList', []))
         );
